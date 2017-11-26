@@ -1,0 +1,24 @@
+条件	结果	支持度	置信度
+[pre_1h:小雨, wind_power:无风, wind_speed:软风, rhu:相对湿度等级6, presea:海气压二级, 56296, prs:气压三级, vap:水气压七级]->temple:微温凉	9	0.64
+[pre_1h:小雨, wind_power:无风, wind_speed:软风, prs:气压四级, rhu:相对湿度等级6, presea:海气压三级, 56286, temple:凉]->vap:水气压一级	6	1
+[pre_1h:小雨, rhu:相对湿度等级6, presea:海气压二级, 56290, prs:气压三级, wind_power:软风, temple:微温凉, vap:水气压六级]->wind_dir:北西北	5	0.83
+[pre_1h:小雨, rhu:相对湿度等级6, presea:海气压二级, prs:气压三级, vap:水气压七级, wind_speed:微风, temple:温和, wind_power:软风]->wind_dir:北	5	0.5
+[pre_1h:小雨, prs:气压四级, rhu:相对湿度等级6, presea:海气压三级, 56286, temple:凉, vap:水气压三级, wind_speed:和风]->wind_power:轻风	5	1
+[pre_1h:小雨, wind_power:无风, wind_speed:软风, presea:海气压二级, 56296, prs:气压三级, vap:水气压七级, rhu:相对湿度等级5]->temple:微温和	7	0.78
+[pre_1h:小雨, wind_power:无风, wind_speed:软风, prs:气压四级, rhu:相对湿度等级6, presea:海气压三级, 56286, vap:水气压七级]->temple:温和	7	0.64
+[pre_1h:小雨, wind_power:无风, wind_speed:软风, prs:气压四级, rhu:相对湿度等级6, presea:海气压二级, 56296, vap:水气压七级]->temple:温和	5	0.62
+[pre_1h:小雨, wind_power:无风, wind_speed:软风, rhu:相对湿度等级6, presea:海气压二级, 56290, prs:气压三级, temple:微温凉]->vap:水气压六级	12	0.86
+[pre_1h:小雨, wind_power:无风, wind_speed:软风, prs:气压四级, rhu:相对湿度等级6, presea:海气压三级, 56286, temple:微温凉]->vap:水气压六级	7	0.64
+[pre_1h:小雨, wind_power:无风, wind_speed:软风, presea:海气压二级, 56290, prs:气压三级, temple:温和, rhu:相对湿度等级5]->vap:水气压六级	5	0.56
+[pre_1h:小雨, wind_power:无风, wind_speed:软风, prs:气压四级, presea:海气压三级, 56290, temple:温和, vap:水气压二级]->rhu:相对湿度等级3	6	1
+[pre_1h:小雨, wind_power:无风, wind_speed:软风, rhu:相对湿度等级6, presea:海气压二级, 56290, prs:气压三级, vap:水气压七级]->temple:温和	6	0.75
+[pre_1h:小雨, wind_power:无风, wind_speed:软风, rhu:相对湿度等级6, presea:海气压二级, 56286, prs:气压三级, vap:水气压七级]->temple:温和	11	0.73
+[pre_1h:小雨, rhu:相对湿度等级6, presea:海气压二级, 56286, prs:气压三级, vap:水气压七级, temple:温和, wind_power:软风]->wind_dir:北	5	0.62
+[pre_1h:小雨, wind_power:无风, wind_speed:软风, prs:气压四级, rhu:相对湿度等级6, presea:海气压三级, 56296, vap:水气压七级]->temple:温和	12	0.92
+[pre_1h:小雨, wind_power:无风, wind_speed:软风, rhu:相对湿度等级6, 56296, temple:凉, presea:海气压四级, vap:水气压三级]->prs:气压五级	6	1
+[pre_1h:小雨, wind_power:无风, wind_speed:软风, rhu:相对湿度等级6, 56296, presea:海气压四级, temple:微凉, vap:水气压三级]->prs:气压五级	7	1
+[pre_1h:小雨, wind_speed:软风, rhu:相对湿度等级6, presea:海气压二级, 56286, prs:气压三级, vap:水气压七级, temple:温和]->wind_dir:北	7	0.54
+[pre_1h:小雨, wind_power:无风, wind_speed:软风, prs:气压四级, presea:海气压三级, 56290, temple:温和, rhu:相对湿度等级5]->vap:水气压六级	5	0.83
+[pre_1h:小雨, wind_power:无风, wind_speed:软风, rhu:相对湿度等级6, presea:海气压二级, 56286, prs:气压三级, temple:微温凉]->vap:水气压六级	9	0.69
+[pre_1h:小雨, rhu:相对湿度等级6, presea:海气压二级, 56286, prs:气压三级, vap:水气压七级, wind_speed:微风, temple:温和]->wind_power:软风	6	0.86
+[pre_1h:小雨, prs:气压四级, presea:海气压三级, 56296, wind_speed:微风, temple:温和, wind_power:软风, vap:水气压一级]->rhu:相对湿度等级2	7	1
