@@ -16,8 +16,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.jar.Attributes.Name;
-
 import com.model.elegrade.Gre_PRS;
 import com.model.elegrade.Gre_Pre_1h;
 import com.model.elegrade.Gre_RHU;
@@ -44,7 +42,7 @@ public class FPTree {
     /**存储每个频繁项及其对应的计数**/
     private Map<List<String>, Integer> frequentMap = new HashMap<List<String>, Integer>();
     /**关联规则中，哪些项可作为被推导的结果，默认情况下所有项都可以作为被推导的结果**/
-    private Set<String> decideAttr = null;
+    private static Set<String> decideAttr = null;
 
     public int getMinSuport() {
         return this.minSuport;
@@ -107,26 +105,28 @@ public class FPTree {
     private List<StrongAssociationRule> getRules(List<String> list) {
         List<StrongAssociationRule> rect = new LinkedList<StrongAssociationRule>();
         if (list.size() > 1) {
-//            for (int i = 0; i < list.size(); i++) {
-//                String result = list.get(i);
-//                if (decideAttr.contains(result)) {
-//                    List<String> condition = new ArrayList<String>();
-//                    condition.addAll(list.subList(0, i));
-//                    condition.addAll(list.subList(i + 1, list.size()));
-//                    StrongAssociationRule rule = new StrongAssociationRule();
-//                    rule.condition = condition;
-//                    rule.result = result;
-//                    rect.add(rule);
-//                }
-//            }
-        	/*一条频繁模式只得到一条关联规则*/
-        	String result = list.get(list.size()-1);
-        	List<String> condition = new ArrayList<String>();
-        	condition.addAll(list.subList(0, list.size()-1));
-        	StrongAssociationRule rule = new StrongAssociationRule();
-        	rule.condition = condition;
-        	rule.result = result;
-        	rect.add(rule);
+            for (int i = 0; i < list.size(); i++) {
+                String result = list.get(i);
+                if (decideAttr.contains(result)) {
+                    List<String> condition = new ArrayList<String>();
+                    condition.addAll(list.subList(0, i));
+                    condition.addAll(list.subList(i + 1, list.size()));
+                    StrongAssociationRule rule = new StrongAssociationRule();
+                    rule.condition = condition;
+                    rule.result = result;
+                    rect.add(rule);
+                	RuleBase.addrule(result, rule);
+                }
+            }
+//        	/*一条频繁模式只得到一条关联规则*/
+//        	String result = list.get(list.size()-1);
+//        	List<String> condition = new ArrayList<String>();
+//        	condition.addAll(list.subList(0, list.size()-1));
+//        	StrongAssociationRule rule = new StrongAssociationRule();
+//        	rule.condition = condition;
+//        	rule.result = result;
+//        	rect.add(rule);
+//        	RuleBase.addrule(result, rule);
         }
         return rect;
     }
@@ -157,6 +157,7 @@ public class FPTree {
                                 
                                 /*数据离散化**********************************/
                     			String grade =  null;
+                    			str[0] = "station:"+ str[0];
                     			grade = Gre_PRS.getgrade(Float.parseFloat(str[1]));
                     			str[1] = "prs:"+grade;//气压
                     			grade = Gre_presea.getgrade(Float.parseFloat(str[2]));
@@ -499,7 +500,7 @@ public class FPTree {
         for (Entry<List<String>, Integer> entry : frequentMap.entrySet()) {
         	/*加一点处理，为了得到指定条件数目的频繁项*/
             List<String> items = entry.getKey();
-            conditionum = 9;
+            conditionum = 5;
         	if (items.size()<conditionum) {
 				continue;
 			}
@@ -529,10 +530,10 @@ public class FPTree {
 
     public static void main(String[] args) throws IOException {
         String infile = "C:\\Users\\Administrator\\Desktop\\气象数据\\逐小时观测资料\\test.csv";
-//    	  String infile = "C:\\Users\\Administrator\\Desktop\\气象数据\\逐小时观测资料\\trolley.txt";
+    	String testfile = "C:\\Users\\Administrator\\Desktop\\气象数据\\逐小时观测资料\\test1.csv";
         FPTree fpTree = new FPTree();
-        fpTree.setConfident(0.5);
-        fpTree.setMinSuport(5);
+        fpTree.setConfident(0.6);
+        fpTree.setMinSuport(10);
 //        if (args.length >= 2) {
 //            double confidence = Double.parseDouble(args[0]);
 //            int suport = Integer.parseInt(args[1]);
@@ -542,12 +543,12 @@ public class FPTree {
 
         List<List<String>> trans = fpTree.readTransRocords(new String[] { infile });
         //可以作为推导的结果
-        Set<String> decideAttr = new HashSet<String>();
-        decideAttr.add("小雨");
-        decideAttr.add("中雨");
-        decideAttr.add("大雨");
-        decideAttr.add("暴雨");
-        decideAttr.add("相对湿度等级6");
+//        Set<String> decideAttr = new HashSet<String>();
+//        decideAttr.add("pre_1h:小雨");
+//        decideAttr.add("pre_1h:中雨");
+//        decideAttr.add("pre_1h:大雨");
+//        decideAttr.add("pre_1h:暴雨");
+//        decideAttr.add("相对湿度等级6");
         fpTree.setDecideAttr(decideAttr);
         long begin = System.currentTimeMillis();
         fpTree.buildFPTree(trans);
@@ -561,7 +562,7 @@ public class FPTree {
         bw.write("模式\t\t频数");
         bw.newLine();
         for (Entry<List<String>, Integer> entry : pattens.entrySet()) {
-            System.out.println(entry.getKey() + "\t" + entry.getValue());
+//            System.out.println(entry.getKey() + "\t" + entry.getValue());
             bw.write(joinList(entry.getKey()) + "\t" + entry.getValue());
             bw.newLine();
         }
@@ -576,14 +577,20 @@ public class FPTree {
         bw.newLine();
         DecimalFormat dfm = new DecimalFormat("#.##");
         for (StrongAssociationRule rule : rules) {
-            System.out.println(rule.condition + "->" + rule.result + "\t" + dfm.format(rule.support)
-                               + "\t" + dfm.format(rule.confidence));
+//            System.out.println(rule.condition + "->" + rule.result + "\t" + dfm.format(rule.support)
+//                               + "\t" + dfm.format(rule.confidence));
             bw.write(rule.condition + "->" + rule.result + "\t" + dfm.format(rule.support) + "\t"
                      + dfm.format(rule.confidence));
             bw.newLine();
         }
         bw.close();
 
+
+        long begin1 = System.currentTimeMillis();
+        RuleBase ruleBase = new RuleBase();
+        ruleBase.testIsmatch(new String[] { testfile });
+        long end1 = System.currentTimeMillis();
+        System.out.println("buildFPTree use time:" + (end1 - begin1));
     }
 
     private static String joinList(List<String> list) {
