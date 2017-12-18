@@ -530,10 +530,9 @@ public class FPTree {
 
     public static void main(String[] args) throws IOException {
         String infile = "C:\\Users\\Administrator\\Desktop\\气象数据\\逐小时观测资料\\test.csv";
-    	String testfile = "C:\\Users\\Administrator\\Desktop\\气象数据\\逐小时观测资料\\test1.csv";
         FPTree fpTree = new FPTree();
         fpTree.setConfident(0.6);
-        fpTree.setMinSuport(10);
+        fpTree.setMinSuport(1);
 //        if (args.length >= 2) {
 //            double confidence = Double.parseDouble(args[0]);
 //            int suport = Integer.parseInt(args[1]);
@@ -585,7 +584,8 @@ public class FPTree {
         }
         bw.close();
 
-
+        /*测试*/
+    	String testfile = "C:\\Users\\Administrator\\Desktop\\气象数据\\逐小时观测资料\\test3.csv";
         long begin1 = System.currentTimeMillis();
         RuleBase ruleBase = new RuleBase();
         ruleBase.testIsmatch(new String[] { testfile });

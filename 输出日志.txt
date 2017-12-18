@@ -1,0 +1,44 @@
+5条数据：
+第0条数据是：station:56286,prs:气压四级,presea:海气压三级,wind_dir:北,wind_speed:软风,temple:温和,rhu:相对湿度等级6,vap:水气压七级,pre_1h:小雨,wind_power:无风,
+第1条数据是：station:56286,prs:气压四级,presea:海气压三级,wind_dir:北,wind_speed:软风,temple:温和,rhu:相对湿度等级6,vap:水气压七级,pre_1h:小雨,wind_power:无风,
+第2条数据是：station:56286,prs:气压四级,presea:海气压三级,wind_dir:东北,wind_speed:微风,temple:温和,rhu:相对湿度等级6,vap:水气压七级,pre_1h:小雨,wind_power:软风,
+第3条数据是：station:56286,prs:气压四级,presea:海气压三级,wind_dir:北,wind_speed:软风,temple:温和,rhu:相对湿度等级6,vap:水气压八级,pre_1h:小雨,wind_power:无风,
+发现vap不是符合的要素,所以:第3条数据异常
+第4条数据是：station:56286,prs:气压四级,presea:海气压三级,wind_dir:北东北,wind_speed:微风,temple:微温和,rhu:相对湿度等级5,vap:水气压八级,pre_1h:小雨,wind_power:无风,
+发现vap不是符合的要素,所以:第4条数据异常
+有3条数据正常
+有2条数据不正常
+buildFPTree use time:238
+
+9条数据：
+条件	结果	支持度	置信度
+第0条数据是：station:56286,prs:气压四级,presea:海气压三级,wind_dir:北,wind_speed:软风,temple:温和,rhu:相对湿度等级6,vap:水气压七级,pre_1h:小雨,wind_power:无风,
+第1条数据是：station:56286,prs:气压四级,presea:海气压三级,wind_dir:北,wind_speed:软风,temple:温和,rhu:相对湿度等级6,vap:水气压七级,pre_1h:小雨,wind_power:无风,
+第2条数据是：station:56286,prs:气压四级,presea:海气压三级,wind_dir:东北,wind_speed:微风,temple:温和,rhu:相对湿度等级6,vap:水气压七级,pre_1h:小雨,wind_power:软风,
+第3条数据是：station:56286,prs:气压四级,presea:海气压三级,wind_dir:北,wind_speed:软风,temple:温和,rhu:相对湿度等级6,vap:水气压八级,pre_1h:小雨,wind_power:无风,
+发现vap不是符合的要素,所以:第3条数据异常
+第4条数据是：station:56286,prs:气压四级,presea:海气压三级,wind_dir:北东北,wind_speed:微风,temple:微温和,rhu:相对湿度等级5,vap:水气压八级,pre_1h:小雨,wind_power:无风,
+发现vap不是符合的要素,所以:第4条数据异常
+第5条数据是：station:56286,prs:气压三级,presea:海气压二级,wind_dir:北,wind_speed:微风,temple:微温和,rhu:相对湿度等级5,vap:水气压七级,pre_1h:小雨,wind_power:软风,
+第6条数据是：station:56286,prs:气压三级,presea:海气压二级,wind_dir:北,wind_speed:微风,temple:微温和,rhu:相对湿度等级5,vap:水气压七级,pre_1h:小雨,wind_power:软风,
+第7条数据是：station:56286,prs:气压三级,presea:海气压二级,wind_dir:北,wind_speed:微风,temple:微温和,rhu:相对湿度等级5,vap:水气压八级,pre_1h:小雨,wind_power:软风,
+发现vap不是符合的要素,所以:第7条数据异常
+第8条数据是：station:56286,prs:气压三级,presea:海气压二级,wind_dir:北东北,wind_speed:和风,temple:微温和,rhu:相对湿度等级5,vap:水气压七级,pre_1h:小雨,wind_power:软风,
+发现wind_speed不是符合的要素,所以:第8条数据异常
+有5条数据正常
+有4条数据不正常
+buildFPTree use time:289
+
+所以保留3,4,8,9
+条件	结果	支持度	置信度
+第0条数据是：station:56286,prs:气压四级,presea:海气压三级,wind_dir:北,wind_speed:软风,temple:温和,rhu:相对湿度等级6,vap:水气压八级,pre_1h:小雨,wind_power:无风,
+发现vap不是符合的要素,所以:第0条数据异常
+第1条数据是：station:56286,prs:气压四级,presea:海气压三级,wind_dir:北东北,wind_speed:微风,temple:微温和,rhu:相对湿度等级5,vap:水气压八级,pre_1h:小雨,wind_power:无风,
+发现vap不是符合的要素,所以:第1条数据异常
+第2条数据是：station:56286,prs:气压三级,presea:海气压二级,wind_dir:北,wind_speed:微风,temple:微温和,rhu:相对湿度等级5,vap:水气压八级,pre_1h:小雨,wind_power:软风,
+发现vap不是符合的要素,所以:第2条数据异常
+第3条数据是：station:56286,prs:气压三级,presea:海气压二级,wind_dir:北东北,wind_speed:和风,temple:微温和,rhu:相对湿度等级5,vap:水气压七级,pre_1h:小雨,wind_power:软风,
+发现wind_speed不是符合的要素,所以:第3条数据异常
+有0条数据正常
+有4条数据不正常
+buildFPTree use time:163
